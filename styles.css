@@ -24,6 +24,8 @@ body {
     background: #2D3E7C;
 }
 header {
+    background-color: #000000;
+    color: #000000;
     padding: 35px 22px;
     border-radius: 8px;
     text-align: center;
@@ -149,7 +151,6 @@ footer {
 }
 
 .title {
-    background-color: var(--bg);
     font-size: var(--fs);
     font-weight: 800;
     letter-spacing: var(--ls);
