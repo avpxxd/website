@@ -5,12 +5,12 @@ div {
   width:500px;
   margin:auto;
 }
-.mycontainer {
+.threesections {
   width:100%;
   overflow:auto;
   font-family: Arial, Helvetica, sans-serif;
 }
-.mycontainer div {
+.threesections div {
   width:33%;
   float:left;
 }
@@ -26,4 +26,305 @@ img {
 }
 body {
     background: #000;
+}
+header {
+    background-color: #000000;
+    color: #000000;
+    padding: 35px 22px;
+    border-radius: 8px;
+    text-align: center;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+.topnav {
+    display: flex;                /* Flexbox layout */
+    justify-content: center;      /* Center the nav items horizontally */
+    gap: 5px;
+    align-items: center;          /* Center the nav items vertically */
+    height: 51px;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    padding: 0 10px;              /* Padding on the sides */
+}
+
+.topnav a {
+    color: rgb(255, 255, 255);
+    background-color: #8918e6;       /* Black background color */
+    text-align: center;
+    padding: 14px 16px;
+    border-radius: 8px;
+    text-decoration: none;
+    font-size: 17px;
+    margin: 0 5px;                /* Optional: Space between links */
+}
+
+.topnav a:hover {
+    color: rgb(255, 255, 255);
+    background-color: #8f2ae2;
+}
+
+.topnav a.active {
+    background-color: #2326ee;
+    color: rgb(255, 255, 255);
+}
+.glow-on-hover {
+    margin: 0;
+    width: 150px;
+    height :50px;
+    border: none;
+    outline: none;
+    color: #ffffff;
+    background: #1a1a1a;
+    cursor: pointer;
+    position: relative;
+    z-index: 0;
+    border-radius: 15px;
+    font-size: 20px;
+}
+.glow-on-hover:before {
+    content: '';
+    background: linear-gradient(45deg, #ff0000, #ff7300, #fffb00, #48ff00, #00ffd5, #002bff, #7a00ff, #ff00c8, #ff0000);
+    position: absolute;
+    top: -2px;
+    left:-2px;
+    background-size: 400%;
+    z-index: -1;
+    filter: blur(5px);
+    width: calc(100% + 4px);
+    height: calc(100% + 4px);
+    animation: glowing 20s linear infinite;
+    opacity: 0;
+    transition: opacity .3s ease-in-out;
+    border-radius: 10px;
+}
+.glow-on-hover:active {
+    color: #ffffff
+}
+.glow-on-hover:active:after {
+    background: transparent;
+}
+.glow-on-hover:hover:before {
+    opacity: 1;
+}
+.glow-on-hover:after {
+    z-index: -1;
+    content: '';
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background: #1a1a1a;
+    left: 0;
+    top: 0;
+    border-radius: 10px;
+}
+footer {
+    background-color: #000000;
+    color: #000000;
+    padding: 35px 22px;
+    border-radius: 8px;
+    text-align: center;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+@keyframes glowing {
+    0% { background-position: 0 0; }
+    50% { background-position: 400% 0; }
+    100% { background-position: 0 0; }
+}
+@import url("https://fonts.googleapis.com/css2?family=Inter:wght@400;800&display=swap");
+
+:root {
+    --bg: #000000;
+    --clr-1: #3399ff;  /* Aurora Color 1  old color: 00c2ff */
+    --clr-2: #66ff66;  /* Aurora Color 2  old color: 33ff8c */
+    --clr-3: #ff0000;  /* Aurora Color 3  old color: ffc640 */
+    --clr-4: #ff33cc;  /* Aurora Color 4  old color: e54cff */
+
+    --blur: 1rem;
+    --fs: clamp(2rem, 4vw, 5rem);
+    --ls: clamp(-1.75px, -0.25vw, -3.5px);
+}
+
+*,
+*::before,
+*::after {
+    font-family: inherit;
+    box-sizing: border-box;
+}
+
+.content {
+    text-align: center;
+}
+
+.title {
+    background-color: var(--bg);
+    font-size: var(--fs);
+    font-weight: 800;
+    letter-spacing: var(--ls);
+    position: relative;
+    overflow: hidden;
+    margin: 0;
+}
+
+.subtitle {
+}
+
+.aurora {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 2;
+    mix-blend-mode: darken;
+    pointer-events: none;
+}
+
+.aurora__item {
+    overflow: hidden;
+    position: absolute;
+    width: 60vw;
+    height: 60vw;
+    background-color: var(--clr-1);
+    border-radius: 37% 29% 27% 27% / 28% 25% 41% 37%;
+    filter: blur(var(--blur));
+    mix-blend-mode: overlay;
+}
+
+.aurora__item:nth-of-type(1) {
+    top: -50%;
+    animation: aurora-border 6s ease-in-out infinite,
+        aurora-1 12s ease-in-out infinite alternate;
+}
+
+.aurora__item:nth-of-type(2) {
+    background-color: var(--clr-3);
+    right: 0;
+    top: 0;
+    animation: aurora-border 6s ease-in-out infinite,
+        aurora-2 12s ease-in-out infinite alternate;
+}
+
+.aurora__item:nth-of-type(3) {
+    background-color: var(--clr-2);
+    left: 0;
+    bottom: 0;
+    animation: aurora-border 6s ease-in-out infinite,
+        aurora-3 8s ease-in-out infinite alternate;
+}
+
+.aurora__item:nth-of-type(4) {
+    background-color: var(--clr-4);
+    right: 0;
+    bottom: -50%;
+    animation: aurora-border 6s ease-in-out infinite,
+        aurora-4 24s ease-in-out infinite alternate;
+}
+
+@keyframes aurora-1 {
+    0% {
+    top: 0;
+    right: 0;
+    }
+
+    50% {
+    top: 100%;
+    right: 75%;
+    }
+
+    75% {
+    top: 100%;
+    right: 25%;
+    }
+
+    100% {
+    top: 0;
+    right: 0;
+    }
+}
+
+@keyframes aurora-2 {
+    0% {
+    top: -50%;
+    left: 0%;
+    }
+
+    60% {
+    top: 100%;
+    left: 75%;
+    }
+
+    85% {
+    top: 100%;
+    left: 25%;
+    }
+
+    100% {
+    top: -50%;
+    left: 0%;
+    }
+}
+
+@keyframes aurora-3 {
+    0% {
+    bottom: 0;
+    left: 0;
+    }
+
+    40% {
+    bottom: 100%;
+    left: 75%;
+    }
+
+    65% {
+    bottom: 40%;
+    left: 50%;
+    }
+
+    100% {
+    bottom: 0;
+    left: 0;
+    }
+}
+
+@keyframes aurora-4 {
+    0% {
+    bottom: -50%;
+    right: 0;
+    }
+
+    50% {
+    bottom: 0%;
+    right: 40%;
+    }
+
+    90% {
+    bottom: 50%;
+    right: 25%;
+    }
+
+    100% {
+    bottom: -50%;
+    right: 0;
+    }
+}
+
+@keyframes aurora-border {
+    0% {
+    border-radius: 37% 29% 27% 27% / 28% 25% 41% 37%;
+    }
+
+    25% {
+    border-radius: 47% 29% 39% 49% / 61% 19% 66% 26%;
+    }
+
+    50% {
+    border-radius: 57% 23% 47% 72% / 63% 17% 66% 33%;
+    }
+
+    75% {
+    border-radius: 28% 49% 29% 100% / 93% 20% 64% 25%;
+    }
+
+    100% {
+    border-radius: 37% 29% 27% 27% / 28% 25% 41% 37%;
+    }
 }
