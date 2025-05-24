@@ -128,7 +128,6 @@ footer {
 @import url("https://fonts.googleapis.com/css2?family=Inter:wght@400;800&display=swap");
 
 :root {
-    --bg: #000000;
     --clr-1: #3399ff;  /* Aurora Color 1  old color: 00c2ff */
     --clr-2: #66ff66;  /* Aurora Color 2  old color: 33ff8c */
     --clr-3: #ff0000;  /* Aurora Color 3  old color: ffc640 */
