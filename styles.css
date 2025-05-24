@@ -1,6 +1,11 @@
 .p1 {
   font-family: Arial, Helvetica, sans-serif;
 }
+h1 {
+    color: White;
+    position: flex;
+    text-align: center;
+}
 .threesections {
   width:100%;
   overflow:auto;
