@@ -6,7 +6,7 @@
   <title>Andrew V's Online Portfolio</title>
   <link rel="icon" type="image/x-icon" href="6853826.png">
 </head>
-<body>
+<body class="antialiased leading-relaxed">
     <header>
         <div class="content">
           <h1 class="title">Andrew Veinotte
@@ -24,33 +24,112 @@
             <button class="glow-on-hover" type="button" onclick="location.href = 'contact.html'" >Contact</button>
         </div>
     </header>
-        
-        <div>
-            
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>John Doe | Web Developer & Designer</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700;800&display=swap" rel="stylesheet">
+    <style>
+        /* Custom styles to complement Tailwind CSS */
+        body {
+            background-color: #2D3E7C;
+            font-family: 'Inter', sans-serif;
+            color: #E0E0E0; /* A light grey for better readability on the dark blue background */
+        }
+        .glass-effect {
+            background: rgba(255, 255, 255, 0.05);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        .btn-primary {
+            @apply bg-teal-400 text-gray-900 font-bold py-3 px-6 rounded-lg shadow-lg transition-transform transform hover:scale-105 hover:bg-teal-300;
+        }
+        .btn-secondary {
+             @apply bg-gray-700 text-white font-bold py-3 px-6 rounded-lg shadow-lg transition-transform transform hover:scale-105 hover:bg-gray-600;
+        }
+        .section-title {
+            @apply text-4xl font-extrabold text-white mb-4 text-center;
+        }
+        .section-subtitle {
+            @apply text-lg text-teal-300 mb-12 text-center;
+        }
+        .skill-badge {
+            @apply bg-gray-700 text-teal-300 text-sm font-semibold px-4 py-2 rounded-full;
+        }
+        /* Add a subtle animation for sections appearing on scroll */
+        .fade-in-section {
+            opacity: 0;
+            transform: translateY(20px);
+            transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+        }
+        .fade-in-section.is-visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    </style>
+</head>
+    <main>
+        <!-- Hero Section -->
+        <section id="about" class="min-h-screen flex items-center container mx-auto px-6 py-16">
+            <div class="max-w-3xl text-center md:text-left">
+                <h1 class="text-5xl md:text-7xl font-extrabold text-white leading-tight mb-4">
+                    Deez Nuts.
+                </h1>
+                <p class="text-2xl text-teal-300 mb-8">
+                    Ha! Gottem!
+                </p>
+                <p class="text-lg text-gray-300 mb-12 max-w-2xl">
+                    Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+                </p>
+            </div>
+        <!-- Skills Section -->
+        <section id="skills" class="py-20 fade-in-section">
+            <div class="container mx-auto px-6">
+                <h2 class="section-title">My Tech Stack</h2>
+                <p class="section-subtitle">Technologies I work with to build modern web solutions.</p>
+                <div class="max-w-4xl mx-auto flex flex-wrap justify-center gap-4">
+                    <span class="skill-badge">HTML5</span>
+                    <span class="skill-badge">CSS3</span>
+                    <span class="skill-badge">JavaScript (ES6+)</span>
+                    <span class="skill-badge">Python</span>
+                    <span class="skill-badge">Tailwind CSS</span>
+                    <span class="skill-badge">BootStrap CSS</span>
+                    <span class="skill-badge">Git & GitHub</span>
+                </div>
+            </div>
+        </section>
+    </main>
+    <!-- Footer -->
+    <footer class="bg-gray-900/50 py-6">
+        <div class="container mx-auto px-6 text-center text-gray-400">
+            <p>&copy; 2025 AVPxxd. All Rights Reserved.</p>
         </div>
-  
-        <div>
-            
-        </div>
-  
-        <div>
-            
-        </div>
-    </div>
-    <div>
-    </div>
-    <div class="mycontainer">
-        <div>
-            
-        </div>
-        <div>
-            
-        </div>
-  
-        <div>
-            
-        </div>
-    </div>
-    
+    </footer>
+
+    <script>
+        // JavaScript for scroll animations
+        document.addEventListener('DOMContentLoaded', function() {
+            // Fade-in animation for sections on scroll
+            const sections = document.querySelectorAll('.fade-in-section');
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('is-visible');
+                    }
+                });
+            }, {
+                threshold: 0.1
+            });
+
+            sections.forEach(section => {
+                observer.observe(section);
+            });
+        });
+    </script>
+</body>
 </body>
 </html>
