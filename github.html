@@ -4,7 +4,21 @@
     <link rel="stylesheet" href="styles.css">
     <link rel='stylesheet' href='https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/css/bootstrap.min.css'>
     <link rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.10.2/css/all.css'>
-  <title>My Github</title>
+    <title>My Projects</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+        }
+        .project-card {
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        .project-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.2), 0 4px 6px -2px rgba(0, 0, 0, 0.1);
+        }
+    </style>
   <link rel="icon" type="image/x-icon" href="6853826.png">
 </head>
 <body>
@@ -25,62 +39,164 @@
             <button class="glow-on-hover" type="button" onclick="location.href = 'contact.html'" >Contact</button>
         </div>
     </header>
-    <div id="blog" class="tabcontent">
-      <h1>DamVan Blog!</h1>
-        <div class="row">
-          <div class="leftcolumn">
-            
-            <!-- Blog Post 1 -->
-            <div class="card">
-                <img src="BlogNewStuff.png" alt="New Stuff Image Placeholder" class="blogimg">
-                <h2 class="blog-title">New Stuff!</h2>
-                <h5 class="blog-date">October 6, 2025</h5>
-                <p class="blog-paragraph">
-                  Another project has been added to the Cool Stuff section! Be sure to go check it out. We're excited to share more fun projects with you all soon.
-                </p>
-            </div>
-            
-            <!-- Blog Post 2 -->
-            <div class="card">
-                <img src="logo.png" alt="Website V0.2 Placeholder" class="blogimg">
-                <h2 class="blog-title">Website V0.2!</h2>
-                <h5 class="blog-date">August 20, 2025</h5>
-                <p class="blog-paragraph">
-                  The website is finally starting to come together! Though it's still a bit buggy and missing some content, we've made a lot of progress. We also published our first lil fun project in the Cool Stuff section!
-                </p>
-            </div>
+    <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Projects</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+        }
+        .project-card {
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        .project-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.2), 0 4px 6px -2px rgba(0, 0, 0, 0.1);
+        }
+    </style>
+</head>
+<body class="bg-[#2D3E7C] text-slate-100">
 
-            <!-- Blog Post 3 -->
-            <div class="card">
-                <img src="logo.png" alt="Website Launch Placeholder" class="blogimg">
-                <h2 class="blog-title">The Website Launches!</h2>
-                <h5 class="blog-date">July 14, 2025</h5>
-                <p class="blog-paragraph">
-                  The website has launched today! (Or technically yesterday, as it took a day to get the blog page up and running!) We hope to provide some awesome content very (very) soon!
-                </p>
-            </div>
-            
-            <!-- 
-            ==================================================================
-            === NEW BLOG POST TEMPLATE =======================================
-            ================================="=================================
-            To add a new blog post, copy the <div class="card"> block below 
-            and paste it at the top, right under the <div class="leftcolumn">
-            ==================================================================
-            
-            <div class="card">
-                <img src="https://placehold.co/800x400/545768/FFFFFF?text=Your+Image" alt="A descriptive alt text" class="blogimg">
-                <h2 class="blog-title">Your New Blog Post Title</h2>
-                <h5 class="blog-date">Month Day, 20XX</h5>
-                <p class="blog-paragraph">
-                    This is a small paragraph for your new blog post. Write a short, engaging summary of what the article is about here.
-                </p>
-            </div>
-
-            -->
-
-          </div>
+    <!-- Header Section -->
+    <header class="bg-[#1F2A54] shadow-lg">
+        <div class="container mx-auto px-6 py-12 text-center">
+            <h1 class="text-4xl md:text-5xl font-bold text-white leading-tight">My Work & Projects</h1>
+            <p class="mt-4 text-lg text-slate-300 max-w-2xl mx-auto">
+                Here's a selection of some projects I'm proud of. Feel free to explore the live demos and check out the code.
+            </p>
         </div>
-    </div>
+    </header>
+
+    <!-- Main Content: Projects Grid -->
+    <main class="container mx-auto px-6 py-16">
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10">
+
+            <!-- Project Card 1 -->
+            <div class="project-card bg-[#4A5A9A] rounded-xl overflow-hidden shadow-md flex flex-col">
+                <img src="https://placehold.co/600x400/3498db/ffffff?text=E-commerce+Platform" alt="Project 1 Screenshot" class="w-full h-48 object-cover">
+                <div class="p-6 flex flex-col flex-grow">
+                    <h3 class="text-2xl font-semibold mb-2 text-white">E-commerce Platform</h3>
+                    <p class="text-slate-200 mb-4 flex-grow">A full-featured online store built with a modern MERN stack, including payment gateway integration and an admin dashboard for managing products.</p>
+                    <div class="mb-4">
+                        <span class="inline-block bg-sky-200 text-sky-900 text-sm font-medium mr-2 px-3 py-1 rounded-full">React</span>
+                        <span class="inline-block bg-sky-200 text-sky-900 text-sm font-medium mr-2 px-3 py-1 rounded-full">Node.js</span>
+                        <span class="inline-block bg-sky-200 text-sky-900 text-sm font-medium mr-2 px-3 py-1 rounded-full">MongoDB</span>
+                    </div>
+                    <div class="mt-auto flex justify-between items-center">
+                        <a href="#" class="text-sky-300 hover:text-sky-100 font-medium transition-colors">Live Demo &rarr;</a>
+                        <a href="#" class="text-slate-300 hover:text-white font-medium transition-colors">GitHub</a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Project Card 2 -->
+            <div class="project-card bg-[#4A5A9A] rounded-xl overflow-hidden shadow-md flex flex-col">
+                <img src="https://placehold.co/600x400/2ecc71/ffffff?text=Task+Manager+App" alt="Project 2 Screenshot" class="w-full h-48 object-cover">
+                <div class="p-6 flex flex-col flex-grow">
+                    <h3 class="text-2xl font-semibold mb-2 text-white">Task Manager App</h3>
+                    <p class="text-slate-200 mb-4 flex-grow">A sleek and intuitive task management application with drag-and-drop functionality, real-time collaboration features, and user authentication.</p>
+                    <div class="mb-4">
+                        <span class="inline-block bg-emerald-200 text-emerald-900 text-sm font-medium mr-2 px-3 py-1 rounded-full">Vue.js</span>
+                        <span class="inline-block bg-emerald-200 text-emerald-900 text-sm font-medium mr-2 px-3 py-1 rounded-full">Firebase</span>
+                        <span class="inline-block bg-emerald-200 text-emerald-900 text-sm font-medium mr-2 px-3 py-1 rounded-full">Tailwind CSS</span>
+                    </div>
+                    <div class="mt-auto flex justify-between items-center">
+                        <a href="#" class="text-sky-300 hover:text-sky-100 font-medium transition-colors">Live Demo &rarr;</a>
+                        <a href="#" class="text-slate-300 hover:text-white font-medium transition-colors">GitHub</a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Project Card 3 -->
+            <div class="project-card bg-[#4A5A9A] rounded-xl overflow-hidden shadow-md flex flex-col">
+                <img src="https://placehold.co/600x400/e74c3c/ffffff?text=Data+Visualization" alt="Project 3 Screenshot" class="w-full h-48 object-cover">
+                <div class="p-6 flex flex-col flex-grow">
+                    <h3 class="text-2xl font-semibold mb-2 text-white">Data Visualization Dashboard</h3>
+                    <p class="text-slate-200 mb-4 flex-grow">An interactive dashboard for visualizing complex datasets. Features dynamic charts and graphs built with D3.js, allowing users to filter and explore data.</p>
+                    <div class="mb-4">
+                        <span class="inline-block bg-red-200 text-red-900 text-sm font-medium mr-2 px-3 py-1 rounded-full">D3.js</span>
+                        <span class="inline-block bg-red-200 text-red-900 text-sm font-medium mr-2 px-3 py-1 rounded-full">Python</span>
+                        <span class="inline-block bg-red-200 text-red-900 text-sm font-medium mr-2 px-3 py-1 rounded-full">Flask</span>
+                    </div>
+                    <div class="mt-auto flex justify-between items-center">
+                        <a href="#" class="text-sky-300 hover:text-sky-100 font-medium transition-colors">Live Demo &rarr;</a>
+                        <a href="#" class="text-slate-300 hover:text-white font-medium transition-colors">GitHub</a>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Project Card 4 -->
+            <div class="project-card bg-[#4A5A9A] rounded-xl overflow-hidden shadow-md flex flex-col">
+                <img src="https://placehold.co/600x400/9b59b6/ffffff?text=Portfolio+Website" alt="Project 4 Screenshot" class="w-full h-48 object-cover">
+                <div class="p-6 flex flex-col flex-grow">
+                    <h3 class="text-2xl font-semibold mb-2 text-white">Personal Portfolio</h3>
+                    <p class="text-slate-200 mb-4 flex-grow">The website you're looking at now! Designed to be fast, responsive, and showcase my skills and projects in a clean, professional manner.</p>
+                    <div class="mb-4">
+                        <span class="inline-block bg-purple-200 text-purple-900 text-sm font-medium mr-2 px-3 py-1 rounded-full">HTML5</span>
+                        <span class="inline-block bg-purple-200 text-purple-900 text-sm font-medium mr-2 px-3 py-1 rounded-full">Tailwind CSS</span>
+                        <span class="inline-block bg-purple-200 text-purple-900 text-sm font-medium mr-2 px-3 py-1 rounded-full">JavaScript</span>
+                    </div>
+                    <div class="mt-auto flex justify-between items-center">
+                        <a href="#" class="text-sky-300 hover:text-sky-100 font-medium transition-colors">Live Demo &rarr;</a>
+                        <a href="#" class="text-slate-300 hover:text-white font-medium transition-colors">GitHub</a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Project Card 5 -->
+            <div class="project-card bg-[#4A5A9A] rounded-xl overflow-hidden shadow-md flex flex-col">
+                <img src="https://placehold.co/600x400/f1c40f/ffffff?text=Weather+App" alt="Project 5 Screenshot" class="w-full h-48 object-cover">
+                <div class="p-6 flex flex-col flex-grow">
+                    <h3 class="text-2xl font-semibold mb-2 text-white">Weather Forecast App</h3>
+                    <p class="text-slate-200 mb-4 flex-grow">A simple yet powerful weather app that provides current weather conditions and a 5-day forecast using data from a third-party API.</p>
+                    <div class="mb-4">
+                        <span class="inline-block bg-yellow-200 text-yellow-900 text-sm font-medium mr-2 px-3 py-1 rounded-full">JavaScript</span>
+                        <span class="inline-block bg-yellow-200 text-yellow-900 text-sm font-medium mr-2 px-3 py-1 rounded-full">REST API</span>
+                        <span class="inline-block bg-yellow-200 text-yellow-900 text-sm font-medium mr-2 px-3 py-1 rounded-full">CSS Grid</span>
+                    </div>
+                    <div class="mt-auto flex justify-between items-center">
+                        <a href="#" class="text-sky-300 hover:text-sky-100 font-medium transition-colors">Live Demo &rarr;</a>
+                        <a href="#" class="text-slate-300 hover:text-white font-medium transition-colors">GitHub</a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Project Card 6 -->
+            <div class="project-card bg-[#4A5A9A] rounded-xl overflow-hidden shadow-md flex flex-col">
+                <img src="https://placehold.co/600x400/1abc9c/ffffff?text=Recipe+Finder" alt="Project 6 Screenshot" class="w-full h-48 object-cover">
+                <div class="p-6 flex flex-col flex-grow">
+                    <h3 class="text-2xl font-semibold mb-2 text-white">Recipe Finder</h3>
+                    <p class="text-slate-200 mb-4 flex-grow">A web app that helps users find recipes based on the ingredients they have on hand. Features a search and filtering system to discover new meals.</p>
+                    <div class="mb-4">
+                        <span class="inline-block bg-teal-200 text-teal-900 text-sm font-medium mr-2 px-3 py-1 rounded-full">Angular</span>
+                        <span class="inline-block bg-teal-200 text-teal-900 text-sm font-medium mr-2 px-3 py-1 rounded-full">TypeScript</span>
+                        <span class="inline-block bg-teal-200 text-teal-900 text-sm font-medium mr-2 px-3 py-1 rounded-full">SCSS</span>
+                    </div>
+                    <div class="mt-auto flex justify-between items-center">
+                        <a href="#" class="text-sky-300 hover:text-sky-100 font-medium transition-colors">Live Demo &rarr;</a>
+                        <a href="#" class="text-slate-300 hover:text-white font-medium transition-colors">GitHub</a>
+                    </div>
+                </div>
+            </div>
+            
+        </div>
+    </main>
+
+    <!-- Footer Section -->
+    <footer class="bg-[#1F2A54] border-t border-slate-700">
+        <div class="container mx-auto px-6 py-8 text-center text-slate-300">
+            <p>&copy; 2024 Your Name. All Rights Reserved.</p>
+            <div class="flex justify-center space-x-6 mt-4">
+                <a href="#" class="hover:text-white transition-colors">GitHub</a>
+                <a href="#" class="hover:text-white transition-colors">LinkedIn</a>
+                <a href="#" class="hover:text-white transition-colors">Twitter</a>
+            </div>
+        </div>
+    </footer>
+
+</body>
 </body>
 </html>
