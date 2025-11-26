@@ -1,0 +1,275 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Coming Soon - AVPxxd</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;700;900&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Outfit', sans-serif;
+            background-color: #050505;
+            color: white;
+            overflow: hidden; /* Prevent scrollbars from canvas */
+            user-select: none; /* Prevent text selection while clicking */
+        }
+
+        .glass-panel {
+            background: rgba(255, 255, 255, 0.03);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.37);
+            pointer-events: none; /* Let clicks pass through to canvas */
+        }
+        
+        /* Re-enable pointer events for text selection if needed, 
+           but kept off generally to allow clicking the background easier */
+        .glass-panel * {
+            pointer-events: auto;
+        }
+
+        .glow-text {
+            text-shadow: 0 0 20px rgba(124, 58, 237, 0.5), 
+                         0 0 40px rgba(124, 58, 237, 0.3);
+            background: linear-gradient(to right, #c4b5fd, #a78bfa);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            animation: pulse-glow 1.5s infinite alternate;
+        }
+
+        @keyframes pulse-glow {
+            0% { 
+                text-shadow: 0 0 10px rgba(139, 92, 246, 0.1); 
+                opacity: 0.15;
+            }
+            100% { 
+                text-shadow: 0 0 50px rgba(139, 92, 246, 0.8), 0 0 20px rgba(255, 255, 255, 0.5); 
+                opacity: 1;
+            }
+        }
+
+        #canvas-container {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+        }
+    </style>
+</head>
+<body class="h-screen w-screen flex flex-col justify-between items-center relative">
+
+    <!-- Background Canvas -->
+    <div id="canvas-container">
+        <canvas id="neural-canvas"></canvas>
+    </div>
+
+    <!-- Spacer for flex layout -->
+    <div class="flex-1"></div>
+
+    <!-- Main Content -->
+    <main class="z-10 p-12 rounded-3xl glass-panel text-center transform hover:scale-105 transition-transform duration-500 ease-out border border-white/10 mx-4">
+        <h2 class="text-sm md:text-base tracking-[0.5em] uppercase text-gray-200 mb-4 font-bold">Something Amazing Is</h2>
+        <h1 class="text-5xl md:text-8xl font-black glow-text mb-6">COMING<br>SOON</h1>
+        <p class="text-gray-400 max-w-md mx-auto text-sm md:text-lg font-light leading-relaxed">
+            <span class="text-white/60 text-xs mt-2 block">(Click anywhere to explode particles)</span>
+        </p>
+    </main>
+
+    <!-- Spacer for flex layout -->
+    <div class="flex-1"></div>
+
+    <!-- Footer -->
+    <footer class="z-10 pb-6 text-center text-gray-500 text-xs md:text-sm tracking-widest uppercase">
+        &copy; 2025 AVPxxd
+    </footer>
+
+    <script>
+        const canvas = document.getElementById('neural-canvas');
+        const ctx = canvas.getContext('2d');
+        
+        let width, height;
+        let particles = [];
+        
+        // Configuration
+        const particleCount = window.innerWidth < 768 ? 60 : 120; 
+        const connectionDistance = 150;
+        const mouseDistance = 200;
+        
+        let mouse = {
+            x: null,
+            y: null,
+            radius: 200
+        }
+
+        window.addEventListener('mousemove', (event) => {
+            mouse.x = event.x;
+            mouse.y = event.y;
+        });
+        
+        window.addEventListener('touchmove', (event) => {
+            mouse.x = event.touches[0].clientX;
+            mouse.y = event.touches[0].clientY;
+        });
+
+        // EXPLOSION EVENT
+        window.addEventListener('mousedown', (event) => {
+            explode(event.clientX, event.clientY);
+        });
+        
+        window.addEventListener('touchstart', (event) => {
+             explode(event.touches[0].clientX, event.touches[0].clientY);
+        });
+
+        function explode(x, y) {
+            particles.forEach(p => {
+                let dx = p.x - x;
+                let dy = p.y - y;
+                let distance = Math.sqrt(dx * dx + dy * dy);
+                if (distance < 400) { // Blast radius
+                    let force = (400 - distance) / 400;
+                    let angle = Math.atan2(dy, dx);
+                    let blastPower = 30 * force; // Explosion strength
+                    
+                    p.vx += Math.cos(angle) * blastPower;
+                    p.vy += Math.sin(angle) * blastPower;
+                }
+            });
+        }
+
+        window.addEventListener('resize', resize);
+        
+        function resize() {
+            width = canvas.width = window.innerWidth;
+            height = canvas.height = window.innerHeight;
+        }
+
+        class Particle {
+            constructor() {
+                this.x = Math.random() * width;
+                this.y = Math.random() * height;
+                this.vx = (Math.random() - 0.5) * 2;
+                this.vy = (Math.random() - 0.5) * 2;
+                this.size = Math.random() * 2 + 1;
+                // Neon palette
+                const colors = ['#00f3ff', '#bc13fe', '#8b5cf6', '#14b8a6']; 
+                this.color = colors[Math.floor(Math.random() * colors.length)];
+                this.baseX = this.x;
+                this.baseY = this.y;
+                this.friction = 0.95; // Slows down particles over time
+            }
+
+            update() {
+                // Apply velocity
+                this.x += this.vx;
+                this.y += this.vy;
+
+                // Apply friction (slows down explosion speed back to normal)
+                // We want them to always move a little bit, so we clamp the minimum speed
+                if (Math.abs(this.vx) > 1 || Math.abs(this.vy) > 1) {
+                    this.vx *= this.friction;
+                    this.vy *= this.friction;
+                } 
+                // Ensure they don't stop completely
+                else {
+                    // Add tiny random movement if they get too slow
+                    if(Math.abs(this.vx) < 0.2) this.vx += (Math.random() - 0.5) * 0.1;
+                    if(Math.abs(this.vy) < 0.2) this.vy += (Math.random() - 0.5) * 0.1;
+                }
+
+                // Mouse Repulsion (Gentle push)
+                if (mouse.x != null) {
+                    let dx = mouse.x - this.x;
+                    let dy = mouse.y - this.y;
+                    let distance = Math.sqrt(dx * dx + dy * dy);
+                    
+                    if (distance < mouseDistance) {
+                        const maxDistance = mouseDistance;
+                        const force = (maxDistance - distance) / maxDistance;
+                        const directionX = (dx / distance) * force * 2; // Strength of repulsion
+                        const directionY = (dy / distance) * force * 2;
+
+                        this.x -= directionX;
+                        this.y -= directionY;
+                    }
+                }
+
+                // Bounce off edges
+                if (this.x < 0 || this.x > width) {
+                    this.vx = -this.vx;
+                    this.x = Math.max(0, Math.min(width, this.x)); // Keep inside
+                } 
+                if (this.y < 0 || this.y > height) {
+                    this.vy = -this.vy;
+                    this.y = Math.max(0, Math.min(height, this.y)); // Keep inside
+                }
+            }
+
+            draw() {
+                ctx.beginPath();
+                ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
+                ctx.fillStyle = this.color;
+                ctx.fill();
+            }
+        }
+
+        function init() {
+            resize();
+            particles = [];
+            for (let i = 0; i < particleCount; i++) {
+                particles.push(new Particle());
+            }
+        }
+
+        function animate() {
+            // TRAIL EFFECT: Fill with semi-transparent black instead of clearing
+            ctx.fillStyle = 'rgba(5, 5, 5, 0.2)'; 
+            ctx.fillRect(0, 0, width, height);
+            
+            // Draw connections first (so particles are on top)
+            connect();
+
+            // Update and draw particles
+            for (let i = 0; i < particles.length; i++) {
+                particles[i].update();
+                particles[i].draw();
+            }
+            
+            requestAnimationFrame(animate);
+        }
+
+        function connect() {
+            let opacityValue = 1;
+            for (let a = 0; a < particles.length; a++) {
+                for (let b = a; b < particles.length; b++) {
+                    let dx = particles[a].x - particles[b].x;
+                    let dy = particles[a].y - particles[b].y;
+                    let distance = dx * dx + dy * dy;
+                    
+                    if (distance < (connectionDistance * connectionDistance)) {
+                        opacityValue = 1 - (distance / (connectionDistance * connectionDistance));
+                        ctx.strokeStyle = 'rgba(139, 92, 246,' + opacityValue + ')'; 
+                        ctx.lineWidth = 1;
+                        ctx.beginPath();
+                        ctx.moveTo(particles[a].x, particles[a].y);
+                        ctx.lineTo(particles[b].x, particles[b].y);
+                        ctx.stroke();
+                    }
+                }
+            }
+        }
+
+        // Initialize
+        init();
+        animate();
+
+        window.addEventListener('mouseout', () => {
+            mouse.x = undefined;
+            mouse.y = undefined;
+        });
+    </script>
+</body>
+</html>
