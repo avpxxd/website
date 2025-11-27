@@ -226,8 +226,11 @@
 
         function animate() {
             // TRAIL EFFECT: Fill with semi-transparent black instead of clearing
-            ctx.fillStyle = 'rgba(5, 5, 5, 0.2)'; 
-            ctx.fillRect(0, 0, width, height);
+            // ctx.fillStyle = 'rgba(5, 5, 5, 0.2)'; 
+            // ctx.fillRect(0, 0, width, height);
+
+            // Clear canvas for no trails
+            ctx.clearRect(0, 0, width, height);
             
             // Draw connections first (so particles are on top)
             connect();
